@@ -547,7 +547,7 @@ in
         type = t.str;
       };
       verboseDefault = lib.mkOption {
-        type = t.oneOf [ t.enum [ "off" ] t.enum [ "on" ] ];
+        type = t.oneOf [ t.enum [ "off" ] t.enum [ "on" ] t.enum [ "full" ] ];
       };
       workspace = lib.mkOption {
         type = t.str;
@@ -3705,7 +3705,7 @@ in
             type = t.str;
           };
           chatType = lib.mkOption {
-            type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] t.enum [ "room" ] ];
+            type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] ];
           };
           keyPrefix = lib.mkOption {
             type = t.str;
@@ -3810,19 +3810,6 @@ in
     allow = lib.mkOption {
       type = t.listOf (t.str);
     };
-    bash = lib.mkOption {
-      type = t.submodule { options = {
-      backgroundMs = lib.mkOption {
-        type = t.int;
-      };
-      cleanupMs = lib.mkOption {
-        type = t.int;
-      };
-      timeoutSec = lib.mkOption {
-        type = t.int;
-      };
-    }; };
-    };
     byProvider = lib.mkOption {
       type = t.attrsOf (t.submodule { options = {
       allow = lib.mkOption {
@@ -3866,6 +3853,9 @@ in
       };
       cleanupMs = lib.mkOption {
         type = t.int;
+      };
+      notifyOnExit = lib.mkOption {
+        type = t.bool;
       };
       timeoutSec = lib.mkOption {
         type = t.int;
@@ -3963,7 +3953,7 @@ in
                 type = t.str;
               };
               chatType = lib.mkOption {
-                type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] t.enum [ "room" ] ];
+                type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] ];
               };
               keyPrefix = lib.mkOption {
                 type = t.str;
@@ -4071,7 +4061,7 @@ in
                 type = t.str;
               };
               chatType = lib.mkOption {
-                type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] t.enum [ "room" ] ];
+                type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] ];
               };
               keyPrefix = lib.mkOption {
                 type = t.str;
@@ -4219,7 +4209,7 @@ in
                 type = t.str;
               };
               chatType = lib.mkOption {
-                type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] t.enum [ "room" ] ];
+                type = t.oneOf [ t.enum [ "direct" ] t.enum [ "group" ] t.enum [ "channel" ] ];
               };
               keyPrefix = lib.mkOption {
                 type = t.str;

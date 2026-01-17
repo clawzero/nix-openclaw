@@ -3886,6 +3886,43 @@ in
       };
     }; };
     };
+    message = lib.mkOption {
+      type = t.submodule { options = {
+      allowCrossContextSend = lib.mkOption {
+        type = t.bool;
+      };
+      broadcast = lib.mkOption {
+        type = t.submodule { options = {
+        enabled = lib.mkOption {
+          type = t.bool;
+        };
+      }; };
+      };
+      crossContext = lib.mkOption {
+        type = t.submodule { options = {
+        allowAcrossProviders = lib.mkOption {
+          type = t.bool;
+        };
+        allowWithinProvider = lib.mkOption {
+          type = t.bool;
+        };
+        marker = lib.mkOption {
+          type = t.submodule { options = {
+          enabled = lib.mkOption {
+            type = t.bool;
+          };
+          prefix = lib.mkOption {
+            type = t.str;
+          };
+          suffix = lib.mkOption {
+            type = t.str;
+          };
+        }; };
+        };
+      }; };
+      };
+    }; };
+    };
     profile = lib.mkOption {
       type = t.oneOf [ t.enum [ "minimal" ] t.enum [ "coding" ] t.enum [ "messaging" ] t.enum [ "full" ] ];
     };

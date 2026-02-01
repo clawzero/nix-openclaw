@@ -53,6 +53,12 @@ let
     else
       value;
 
+  baseConfig = {
+    gateway = {
+      mode = "local";
+    };
+  };
+
   mkInstanceConfig = name: inst: let
     gatewayPackage =
       if inst.gatewayPath != null then
@@ -67,7 +73,7 @@ let
         inst.package;
     pluginPackages = plugins.pluginPackagesFor name;
     pluginEnvAll = plugins.pluginEnvAllFor name;
-    mergedConfig = stripNulls (lib.recursiveUpdate cfg.config inst.config);
+    mergedConfig = stripNulls (lib.recursiveUpdate (lib.recursiveUpdate baseConfig cfg.config) inst.config);
     configJson = builtins.toJSON mergedConfig;
     configFile = pkgs.writeText "openclaw-${name}.json" configJson;
     gatewayWrapper = pkgs.writeShellScriptBin "openclaw-gateway-${name}" ''

@@ -39,7 +39,14 @@ pkgs.testers.nixosTest {
               launchd.enable = false;
               instances.default = {
                 gatewayPort = 18999;
-                config = {};
+                config = {
+                  gateway = {
+                    mode = "local";
+                    auth = {
+                      token = "hm-activation-test-token";
+                    };
+                  };
+                };
               };
             };
           };

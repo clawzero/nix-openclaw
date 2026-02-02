@@ -823,6 +823,10 @@ in
         }; }) ]);
           default = null;
         };
+        thinking = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
       }; });
         default = null;
       };
@@ -1415,6 +1419,10 @@ in
             default = null;
           };
         }; }) ]);
+          default = null;
+        };
+        thinking = lib.mkOption {
+          type = t.nullOr (t.str);
           default = null;
         };
       }; });

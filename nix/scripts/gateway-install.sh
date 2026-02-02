@@ -7,6 +7,11 @@ if [ -d extensions ]; then
   cp -r extensions "$out/lib/openclaw/"
 fi
 
+if [ -d docs/reference/templates ]; then
+  mkdir -p "$out/lib/openclaw/docs/reference"
+  cp -r docs/reference/templates "$out/lib/openclaw/docs/reference/"
+fi
+
 if [ -z "${STDENV_SETUP:-}" ]; then
   echo "STDENV_SETUP is not set" >&2
   exit 1
@@ -54,6 +59,22 @@ if [ -n "$combined_stream_src" ]; then
       if [ ! -e "$pkg/node_modules/combined-stream" ]; then
         mkdir -p "$pkg/node_modules"
         ln -s "$combined_stream_src" "$pkg/node_modules/combined-stream"
+      fi
+    done
+  fi
+fi
+
+# Work around missing hasown dependency for form-data in pnpm layout.
+hasown_src="$(find "$out/lib/openclaw/node_modules/.pnpm" -path "*/hasown@*/node_modules/hasown" -print | head -n 1)"
+if [ -n "$hasown_src" ]; then
+  if [ ! -e "$out/lib/openclaw/node_modules/hasown" ]; then
+    ln -s "$hasown_src" "$out/lib/openclaw/node_modules/hasown"
+  fi
+  if [ -n "$form_data_pkgs" ]; then
+    for pkg in $form_data_pkgs; do
+      if [ ! -e "$pkg/node_modules/hasown" ]; then
+        mkdir -p "$pkg/node_modules"
+        ln -s "$hasown_src" "$pkg/node_modules/hasown"
       fi
     done
   fi

@@ -7931,6 +7931,10 @@ in
               type = t.nullOr (t.str);
               default = null;
             };
+            rawKeyPrefix = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
           }; });
             default = null;
           };
@@ -8121,6 +8125,10 @@ in
     };
     responsePrefix = lib.mkOption {
       type = t.nullOr (t.str);
+      default = null;
+    };
+    suppressToolErrors = lib.mkOption {
+      type = t.nullOr (t.bool);
       default = null;
     };
     tts = lib.mkOption {
@@ -8794,6 +8802,10 @@ in
             type = t.nullOr (t.str);
             default = null;
           };
+          rawKeyPrefix = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
         }; });
           default = null;
         };
@@ -9101,6 +9113,10 @@ in
               type = t.nullOr (t.str);
               default = null;
             };
+            rawKeyPrefix = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
           }; });
             default = null;
           };
@@ -9295,6 +9311,10 @@ in
                 default = null;
               };
               keyPrefix = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              rawKeyPrefix = lib.mkOption {
                 type = t.nullOr (t.str);
                 default = null;
               };
@@ -9494,6 +9514,10 @@ in
                 default = null;
               };
               keyPrefix = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              rawKeyPrefix = lib.mkOption {
                 type = t.nullOr (t.str);
                 default = null;
               };
@@ -9775,6 +9799,10 @@ in
                 default = null;
               };
               keyPrefix = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              rawKeyPrefix = lib.mkOption {
                 type = t.nullOr (t.str);
                 default = null;
               };

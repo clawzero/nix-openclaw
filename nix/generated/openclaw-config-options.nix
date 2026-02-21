@@ -3012,6 +3012,15 @@ in
         }; });
           default = null;
         };
+        slashCommand = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          ephemeral = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
         status = lib.mkOption {
           type = t.nullOr (t.enum [ "online" "dnd" "idle" "invisible" ]);
           default = null;
@@ -3740,6 +3749,15 @@ in
         };
         minDelayMs = lib.mkOption {
           type = t.nullOr (t.int);
+          default = null;
+        };
+      }; });
+        default = null;
+      };
+      slashCommand = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        ephemeral = lib.mkOption {
+          type = t.nullOr (t.bool);
           default = null;
         };
       }; });
@@ -5256,6 +5274,10 @@ in
         default = null;
       };
     }; });
+      default = null;
+    };
+    modelByChannel = lib.mkOption {
+      type = t.nullOr (t.attrsOf (t.attrsOf (t.str)));
       default = null;
     };
     msteams = lib.mkOption {
